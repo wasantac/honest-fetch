@@ -23,11 +23,11 @@ export type FailurePromise<E> = {
     error: E;
 };
 export type PromiseResult<T, E = Error> = SuccessPromise<T> | FailurePromise<E>;
-export interface APIProps {
+export type APIProps = {
     url: string;
     headers?: HeadersInit;
-    body?: BodyInit;
-}
+    body?: Record<string, unknown>;
+} & RequestInit;
 export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 /**
  * Performs a safe HTTP fetch request and returns a structured result.
@@ -37,6 +37,8 @@ export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
  * @param {APIProps} apiProps - The properties for the API request, including URL, headers, and body.
  * @param {HTTPMethod} method - The HTTP method to use for the request (e.g., 'GET', 'POST').
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to an object containing either the data, an error, or an exception.
+ *
+ * Default Header: "Content-Type": "application/json"
  *
  * The returned object has the following structure:
  * - `data`: The parsed response data if the request is successful.

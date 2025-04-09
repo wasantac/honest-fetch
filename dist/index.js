@@ -16,6 +16,8 @@ exports.safePromise = safePromise;
  * @param {HTTPMethod} method - The HTTP method to use for the request (e.g., 'GET', 'POST').
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to an object containing either the data, an error, or an exception.
  *
+ * Default Header: "Content-Type": "application/json"
+ *
  * The returned object has the following structure:
  * - `data`: The parsed response data if the request is successful.
  * - `error`: The parsed error response data if the request fails with a non-2xx status code.
@@ -38,14 +40,16 @@ exports.safePromise = safePromise;
  * ```
  */
 async function safeFetch(apiProps, method) {
-    const { url, headers, body } = apiProps;
+    const { url, headers, body, ...rest } = apiProps;
     try {
         const response = await fetch(url, {
             method,
             headers: {
+                "Content-Type": "application/json",
                 ...headers,
             },
-            body: body ? body : undefined,
+            body: body ? JSON.stringify(body) : undefined,
+            ...rest,
         });
         const result = await response.json();
         if (!response.ok) {

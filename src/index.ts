@@ -30,11 +30,11 @@ export type FailurePromise<E> = {
 
 export type PromiseResult<T, E = Error> = SuccessPromise<T> | FailurePromise<E>;
 
-export interface APIProps {
+export type APIProps = {
 	url: string;
 	headers?: HeadersInit;
-	body?: BodyInit;
-}
+	body?: Record<string, unknown>;
+} & RequestInit;
 
 export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
@@ -46,6 +46,8 @@ export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
  * @param {APIProps} apiProps - The properties for the API request, including URL, headers, and body.
  * @param {HTTPMethod} method - The HTTP method to use for the request (e.g., 'GET', 'POST').
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to an object containing either the data, an error, or an exception.
+ *
+ * Default Header: "Content-Type": "application/json"
  *
  * The returned object has the following structure:
  * - `data`: The parsed response data if the request is successful.
@@ -72,14 +74,16 @@ export async function safeFetch<T, E>(
 	apiProps: APIProps,
 	method: HTTPMethod,
 ): Promise<APIResult<T, E>> {
-	const { url, headers, body } = apiProps;
+	const { url, headers, body, ...rest } = apiProps;
 	try {
 		const response = await fetch(url, {
 			method,
 			headers: {
+				"Content-Type": "application/json",
 				...headers,
 			},
-			body: body ? body : undefined,
+			body: body ? JSON.stringify(body) : undefined,
+			...rest,
 		});
 
 		const result = await response.json();
