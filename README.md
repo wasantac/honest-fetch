@@ -29,11 +29,11 @@ yarn add honest-fetch
 Here's a quick example of how to use Honest Fetch:
 
 ```javascript
-import honestFetch from 'honest-fetch';
+import {safeFetch} from 'honest-fetch';
 
 async function fetchData() {
     try {
-        const response = await honestFetch('https://api.example.com/data');
+        const response = await safeFetch('https://api.example.com/data');
         console.log(response);
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -45,7 +45,7 @@ fetchData();
 
 ## API
 
-### `honestFetch(url, options)`
+### `safeFetch(url, options)`
 
 - `url` (string): The URL to fetch.
 - `options` (object): Optional configuration for the request.
@@ -61,7 +61,7 @@ const options = {
     body: JSON.stringify({ key: 'value' }),
 };
 
-honestFetch('https://api.example.com/data', options)
+safeFetch('https://api.example.com/data', options)
     .then(response => console.log(response))
     .catch(error => console.error(error));
 ```
