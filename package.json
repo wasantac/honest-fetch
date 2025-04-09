@@ -2,13 +2,14 @@
 	"name": "honest-fetch",
 	"version": "1.0.0",
 	"description": "A brutally honest and type-safe way to handle API responses in TypeScript.",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"lint": "eslint . --ext .ts",
 		"test": "vitest"
 	},
-	"author": "",
+	"author": "skyshot123",
 	"license": "ISC",
 	"keywords": [
 		"fetch",
@@ -22,7 +23,6 @@
 		"golang-style",
 		"honest"
 	],
-
 	"devDependencies": {
 		"eslint": "^9.24.0",
 		"typescript": "^5.8.3",
