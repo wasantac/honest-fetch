@@ -1,17 +1,21 @@
+type FetchResponseData = Omit<Response, "json">;
 type Success<T> = {
     data: T;
     error: null;
     exception: null;
+    response: FetchResponseData;
 };
 type Failure<E> = {
     data: null;
     error: E;
     exception: null;
+    response: FetchResponseData;
 };
 type Exception = {
     data: null;
     error: null;
     exception: Error;
+    response: null;
 };
 type APIResult<T, E> = Success<T> | Failure<E> | Exception;
 type SuccessPromise<T> = {
@@ -125,4 +129,4 @@ declare function safeDelete<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  */
 declare function safePromise<T, E>(promise: Promise<T>): Promise<PromiseResult<T, E>>;
 
-export { type APIProps, type APIResult, type Exception, type Failure, type FailurePromise, type HTTPMethod, type PromiseResult, type Success, type SuccessPromise, safeDelete, safeFetch, safeGet, safePatch, safePost, safePromise, safePut };
+export { type APIProps, type APIResult, type Exception, type Failure, type FailurePromise, type FetchResponseData, type HTTPMethod, type PromiseResult, type Success, type SuccessPromise, safeDelete, safeFetch, safeGet, safePatch, safePost, safePromise, safePut };

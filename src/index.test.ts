@@ -27,6 +27,8 @@ describe("safeFetch", () => {
 
 		expect(result.data).toEqual(mockData);
 		expect(result.error).toBeNull();
+		expect(result.response?.ok).toBe(true);
+		expect(result.response?.status).toBe(200);
 	});
 
 	it("should return error if the response fails", async () => {

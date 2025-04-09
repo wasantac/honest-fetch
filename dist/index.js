@@ -41,25 +41,29 @@ async function safeFetch(apiProps, method) {
       body: body ? JSON.stringify(body) : void 0,
       ...rest
     });
+    const { json, ...responseRest } = response;
     const result = await response.json();
     if (!response.ok) {
       return {
         data: null,
         error: result,
-        exception: null
+        exception: null,
+        response: responseRest
       };
     }
     return {
       data: result,
       error: null,
-      exception: null
+      exception: null,
+      response: responseRest
     };
   } catch (error) {
     const normalizedException = error instanceof Error ? error : new Error(String(error));
     return {
       data: null,
       error: null,
-      exception: normalizedException
+      exception: normalizedException,
+      response: null
     };
   }
 }

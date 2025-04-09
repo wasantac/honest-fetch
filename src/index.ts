@@ -1,19 +1,24 @@
+export type FetchResponseData = Omit<Response, "json">;
+
 export type Success<T> = {
 	data: T;
 	error: null;
 	exception: null;
+	response: FetchResponseData;
 };
 
 export type Failure<E> = {
 	data: null;
 	error: E;
 	exception: null;
+	response: FetchResponseData;
 };
 
 export type Exception = {
 	data: null;
 	error: null;
 	exception: Error;
+	response: null;
 };
 
 export type APIResult<T, E> = Success<T> | Failure<E> | Exception;
@@ -86,6 +91,8 @@ export async function safeFetch<T, E>(
 			...rest,
 		});
 
+		const { json, ...responseRest } = response;
+
 		const result = await response.json();
 
 		if (!response.ok) {
@@ -93,6 +100,7 @@ export async function safeFetch<T, E>(
 				data: null,
 				error: result as E,
 				exception: null,
+				response: responseRest,
 			};
 		}
 
@@ -100,6 +108,7 @@ export async function safeFetch<T, E>(
 			data: result as T,
 			error: null,
 			exception: null,
+			response: responseRest,
 		};
 	} catch (error) {
 		const normalizedException =
@@ -108,6 +117,7 @@ export async function safeFetch<T, E>(
 			data: null,
 			error: null,
 			exception: normalizedException,
+			response: null,
 		};
 	}
 }
