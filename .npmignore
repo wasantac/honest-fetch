@@ -3,5 +3,7 @@ tests/
 vitest.config.ts
 *.test.ts
 *.spec.ts
+*.test.js
+*.spec.js
 tsconfig.json
 .env
