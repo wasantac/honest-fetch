@@ -1,11 +1,12 @@
 {
 	"name": "honest-fetch",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "A brutally honest and type-safe way to handle API responses in TypeScript.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"sideEffects": false,
 	"scripts": {
-		"build": "tsc",
+		"build": "tsup src/index.ts --format esm,cjs --dts --clean",
 		"lint": "eslint . --ext .ts",
 		"test": "vitest"
 	},
@@ -26,6 +27,7 @@
 	],
 	"devDependencies": {
 		"eslint": "^9.24.0",
+		"tsup": "^8.4.0",
 		"typescript": "^5.8.3",
 		"vitest": "^3.1.1"
 	}
