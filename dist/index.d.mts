@@ -71,7 +71,7 @@ declare function safeFetch<T, E>(apiProps: APIProps, method: HTTPMethod): Promis
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-declare function get<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+declare function safeGet<T, E>(props: APIProps): Promise<APIResult<T, E>>;
 /**
  * Makes a POST request to the specified API endpoint and returns the result.
  *
@@ -81,7 +81,7 @@ declare function get<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-declare function post<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+declare function safePost<T, E>(props: APIProps): Promise<APIResult<T, E>>;
 /**
  * Makes a PUT request to the specified API endpoint and returns the result.
  *
@@ -91,7 +91,7 @@ declare function post<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-declare function put<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+declare function safePut<T, E>(props: APIProps): Promise<APIResult<T, E>>;
 /**
  * Makes a PATCH request to the specified API endpoint and returns the result.
  *
@@ -101,7 +101,7 @@ declare function put<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-declare function patch<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+declare function safePatch<T, E>(props: APIProps): Promise<APIResult<T, E>>;
 /**
  * Makes a DELETE request to the specified API endpoint and returns the result.
  *
@@ -111,7 +111,7 @@ declare function patch<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-declare function del<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+declare function safeDelete<T, E>(props: APIProps): Promise<APIResult<T, E>>;
 /**
  * Wraps a promise to provide a safe way of handling its resolution or rejection.
  * Returns an object containing either the resolved data or the error.
@@ -125,4 +125,4 @@ declare function del<T, E>(props: APIProps): Promise<APIResult<T, E>>;
  */
 declare function safePromise<T, E>(promise: Promise<T>): Promise<PromiseResult<T, E>>;
 
-export { type APIProps, type APIResult, type Exception, type Failure, type FailurePromise, type HTTPMethod, type PromiseResult, type Success, type SuccessPromise, del, get, patch, post, put, safeFetch, safePromise };
+export { type APIProps, type APIResult, type Exception, type Failure, type FailurePromise, type HTTPMethod, type PromiseResult, type Success, type SuccessPromise, safeDelete, safeFetch, safeGet, safePatch, safePost, safePromise, safePut };

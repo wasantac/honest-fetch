@@ -20,13 +20,13 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
-  del: () => del,
-  get: () => get,
-  patch: () => patch,
-  post: () => post,
-  put: () => put,
+  safeDelete: () => safeDelete,
   safeFetch: () => safeFetch,
-  safePromise: () => safePromise
+  safeGet: () => safeGet,
+  safePatch: () => safePatch,
+  safePost: () => safePost,
+  safePromise: () => safePromise,
+  safePut: () => safePut
 });
 module.exports = __toCommonJS(index_exports);
 async function safeFetch(apiProps, method) {
@@ -63,19 +63,19 @@ async function safeFetch(apiProps, method) {
     };
   }
 }
-async function get(props) {
+async function safeGet(props) {
   return safeFetch(props, "GET");
 }
-async function post(props) {
+async function safePost(props) {
   return safeFetch(props, "POST");
 }
-async function put(props) {
+async function safePut(props) {
   return safeFetch(props, "PUT");
 }
-async function patch(props) {
+async function safePatch(props) {
   return safeFetch(props, "PATCH");
 }
-async function del(props) {
+async function safeDelete(props) {
   return safeFetch(props, "DELETE");
 }
 async function safePromise(promise) {
@@ -88,11 +88,11 @@ async function safePromise(promise) {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  del,
-  get,
-  patch,
-  post,
-  put,
+  safeDelete,
   safeFetch,
-  safePromise
+  safeGet,
+  safePatch,
+  safePost,
+  safePromise,
+  safePut
 });

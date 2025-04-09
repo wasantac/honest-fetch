@@ -33,19 +33,19 @@ async function safeFetch(apiProps, method) {
     };
   }
 }
-async function get(props) {
+async function safeGet(props) {
   return safeFetch(props, "GET");
 }
-async function post(props) {
+async function safePost(props) {
   return safeFetch(props, "POST");
 }
-async function put(props) {
+async function safePut(props) {
   return safeFetch(props, "PUT");
 }
-async function patch(props) {
+async function safePatch(props) {
   return safeFetch(props, "PATCH");
 }
-async function del(props) {
+async function safeDelete(props) {
   return safeFetch(props, "DELETE");
 }
 async function safePromise(promise) {
@@ -57,11 +57,11 @@ async function safePromise(promise) {
   }
 }
 export {
-  del,
-  get,
-  patch,
-  post,
-  put,
+  safeDelete,
   safeFetch,
-  safePromise
+  safeGet,
+  safePatch,
+  safePost,
+  safePromise,
+  safePut
 };

@@ -121,7 +121,7 @@ export async function safeFetch<T, E>(
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-export async function get<T, E>(props: APIProps): Promise<APIResult<T, E>> {
+export async function safeGet<T, E>(props: APIProps): Promise<APIResult<T, E>> {
 	return safeFetch<T, E>(props, "GET");
 }
 
@@ -134,7 +134,9 @@ export async function get<T, E>(props: APIProps): Promise<APIResult<T, E>> {
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-export async function post<T, E>(props: APIProps): Promise<APIResult<T, E>> {
+export async function safePost<T, E>(
+	props: APIProps,
+): Promise<APIResult<T, E>> {
 	return safeFetch<T, E>(props, "POST");
 }
 
@@ -147,7 +149,7 @@ export async function post<T, E>(props: APIProps): Promise<APIResult<T, E>> {
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-export async function put<T, E>(props: APIProps): Promise<APIResult<T, E>> {
+export async function safePut<T, E>(props: APIProps): Promise<APIResult<T, E>> {
 	return safeFetch<T, E>(props, "PUT");
 }
 
@@ -160,7 +162,9 @@ export async function put<T, E>(props: APIProps): Promise<APIResult<T, E>> {
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-export async function patch<T, E>(props: APIProps): Promise<APIResult<T, E>> {
+export async function safePatch<T, E>(
+	props: APIProps,
+): Promise<APIResult<T, E>> {
 	return safeFetch<T, E>(props, "PATCH");
 }
 
@@ -173,7 +177,9 @@ export async function patch<T, E>(props: APIProps): Promise<APIResult<T, E>> {
  * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
  * including either the response data or an error.
  */
-export async function del<T, E>(props: APIProps): Promise<APIResult<T, E>> {
+export async function safeDelete<T, E>(
+	props: APIProps,
+): Promise<APIResult<T, E>> {
 	return safeFetch<T, E>(props, "DELETE");
 }
 
