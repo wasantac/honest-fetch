@@ -9,6 +9,7 @@
 		"lint": "eslint . --ext .ts",
 		"test": "vitest"
 	},
+	"files": ["dist", "README.md", "LICENSE"],
 	"author": "skyshot123",
 	"license": "ISC",
 	"keywords": [
