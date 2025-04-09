@@ -60,9 +60,65 @@ export type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
  * ```
  */
 export declare function safeFetch<T, E>(apiProps: APIProps, method: HTTPMethod): Promise<APIResult<T, E>>;
-export declare function get<T, E>(props: APIProps): Promise<APIResult<T, E | Error>>;
-export declare function post<T, E>(props: APIProps): Promise<APIResult<T, E | Error>>;
-export declare function put<T, E>(props: APIProps): Promise<APIResult<T, E | Error>>;
-export declare function patch<T, E>(props: APIProps): Promise<APIResult<T, E | Error>>;
-export declare function del<T, E>(props: APIProps): Promise<APIResult<T, E | Error>>;
+/**
+ * Makes a GET request to the specified API endpoint and returns the result.
+ *
+ * @template T - The expected type of the successful response data.
+ * @template E - The expected type of the error response data.
+ * @param {APIProps} props - The properties required to configure the API request.
+ * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
+ * including either the response data or an error.
+ */
+export declare function get<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+/**
+ * Makes a POST request to the specified API endpoint and returns the result.
+ *
+ * @template T - The expected type of the successful response data.
+ * @template E - The expected type of the error response data.
+ * @param {APIProps} props - The properties required to configure the API request.
+ * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
+ * including either the response data or an error.
+ */
+export declare function post<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+/**
+ * Makes a PUT request to the specified API endpoint and returns the result.
+ *
+ * @template T - The expected type of the successful response data.
+ * @template E - The expected type of the error response data.
+ * @param {APIProps} props - The properties required to configure the API request.
+ * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
+ * including either the response data or an error.
+ */
+export declare function put<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+/**
+ * Makes a PATCH request to the specified API endpoint and returns the result.
+ *
+ * @template T - The expected type of the successful response data.
+ * @template E - The expected type of the error response data.
+ * @param {APIProps} props - The properties required to configure the API request.
+ * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
+ * including either the response data or an error.
+ */
+export declare function patch<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+/**
+ * Makes a DELETE request to the specified API endpoint and returns the result.
+ *
+ * @template T - The expected type of the successful response data.
+ * @template E - The expected type of the error response data.
+ * @param {APIProps} props - The properties required to configure the API request.
+ * @returns {Promise<APIResult<T, E>>} A promise that resolves to the result of the API call,
+ * including either the response data or an error.
+ */
+export declare function del<T, E>(props: APIProps): Promise<APIResult<T, E>>;
+/**
+ * Wraps a promise to provide a safe way of handling its resolution or rejection.
+ * Returns an object containing either the resolved data or the error.
+ *
+ * @template T - The type of the resolved value of the promise.
+ * @template E - The type of the error in case the promise is rejected.
+ *
+ * @param promise - The promise to be handled safely.
+ * @returns A promise that resolves to an object containing either the `data` (resolved value)
+ * or the `error` (rejection reason).
+ */
 export declare function safePromise<T, E>(promise: Promise<T>): Promise<PromiseResult<T, E>>;
