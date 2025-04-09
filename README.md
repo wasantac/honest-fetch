@@ -32,12 +32,12 @@ Here's a quick example of how to use Honest Fetch:
 import {safeFetch} from 'honest-fetch';
 
 async function fetchData() {
-    try {
-        const response = await safeFetch('https://api.example.com/data');
-        console.log(response);
-    } catch (error) {
-        console.error('Error fetching data:', error);
+    const {data, error, exception} = await safeFetch('https://api.example.com/data');
+    if(error || exception){
+        // Handle errors...
+        return
     }
+    // Handle data....
 }
 
 fetchData();
