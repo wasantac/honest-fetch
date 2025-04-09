@@ -1,6 +1,6 @@
 {
 	"name": "honest-fetch",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A brutally honest and type-safe way to handle API responses in TypeScript.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
 	},
 	"files": ["dist", "README.md", "LICENSE"],
 	"author": "skyshot123",
-	"license": "ISC",
+	"license": "MIT",
 	"keywords": [
 		"fetch",
 		"typescript",
