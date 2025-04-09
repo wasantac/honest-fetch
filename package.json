@@ -1,6 +1,6 @@
 {
 	"name": "honest-fetch",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A brutally honest and type-safe way to handle API responses in TypeScript.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
